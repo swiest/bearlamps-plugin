@@ -35,17 +35,6 @@
     <url>https://github.com/swiest/bearlamps-plugin</url>
   </scm>
 
-  <distributionManagement>
-    <repository>
-      <id>nexus.releases</id>
-      <url>http://localhost:8081/nexus/content/repositories/releases</url>
-    </repository>
-    <snapshotRepository>
-      <id>nexus.snapshots</id>
-      <url>http://localhost:8081/nexus/content/repositories/snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
-
   <developers>
     <developer>
       <id>swiest</id>
