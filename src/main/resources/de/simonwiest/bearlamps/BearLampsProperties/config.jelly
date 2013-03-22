@@ -1,0 +1,27 @@
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form">
+  
+  <f:entry title="IP address" field="ipAddress">
+    <f:textbox />
+  </f:entry>
+
+  <f:entry title="IP port" field="ipPort">
+    <f:textbox />
+  </f:entry>
+
+  <f:entry title="Password" field="password">
+    <f:textbox />
+  </f:entry>
+
+  <f:entry title="Turn off bears temporarily" field="disabled">
+    <f:checkbox />
+  </f:entry>
+
+  <f:entry title="Turn off bears during night and weekends" field="restrictedOperatingHours">
+    <f:checkbox />
+  </f:entry>
+
+  <f:validateButton
+    title="Test configuration" progress="Switching all bears off, on, and off again..."
+    method="testConnection" with="ipAddress,ipPort,password" />
+    
+</j:jelly>
