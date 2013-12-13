@@ -26,6 +26,6 @@
 
   <f:validateButton
     title="Test configuration" progress="Switching all bears off, on, and off again..."
-    method="testConnection" with="ipAddress,ipPort,password" />
+    method="testConnection" with="ipAddress,ipPort,user,password" />
     
 </j:jelly>
