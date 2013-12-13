@@ -9,7 +9,7 @@
 
   <groupId>de.simonwiest</groupId>
   <artifactId>bearlamps</artifactId>
-  <version>1.6.0</version>
+  <version>1.6.1-SNAPSHOT</version>
   <packaging>hpi</packaging>
 
   <name>Bear Lamps Plugin</name>
