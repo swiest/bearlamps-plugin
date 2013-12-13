@@ -50,6 +50,8 @@ public class BearLampsProperties extends ViewProperty {
   private String ipAddress;
   /** UDP port of IP socket device. */
   private String ipPort;
+  /** User of IP socket device. */
+  private String user;
   /** Password of IP socket device. */
   private String password;
   /** If true, bears are temporarily muted on the next status update. */
@@ -58,9 +60,10 @@ public class BearLampsProperties extends ViewProperty {
   private boolean restrictedOperatingHours;
 
   @DataBoundConstructor
-  public BearLampsProperties(String ipAddress, String ipPort, String password, boolean disabled, boolean restrictedOperatingHours) {
+  public BearLampsProperties(String ipAddress, String ipPort, String user, String password, boolean disabled, boolean restrictedOperatingHours) {
     this.ipAddress = StringUtils.trim(ipAddress);
     this.ipPort = StringUtils.trim(ipPort);
+    this.user = StringUtils.trim(user);
     this.password = StringUtils.trim(password);
     this.disabled = disabled;
     this.restrictedOperatingHours = restrictedOperatingHours;
@@ -80,6 +83,14 @@ public class BearLampsProperties extends ViewProperty {
 
   public void setIpPort(String ipPort) {
     this.ipPort = ipPort;
+  }
+
+  public String getUser() {
+    return user;
+  }
+
+  public void setUser(String user) {
+    this.user = user;
   }
 
   public String getPassword() {
@@ -114,9 +125,9 @@ public class BearLampsProperties extends ViewProperty {
       return "Bear Lamps";
     }
 
-    public FormValidation doTestConnection(@QueryParameter String ipAddress, @QueryParameter String ipPort, @QueryParameter String password) throws IOException, ServletException {
-      LOGGER.info("Sending test sequence to IP address '" + ipAddress + "', port '" + ipPort + "' (password not echoed here)...");
-      OutletController oc = new OutletController(ipAddress, ipPort, password);
+    public FormValidation doTestConnection(@QueryParameter String ipAddress, @QueryParameter String ipPort, @QueryParameter String user, @QueryParameter String password) throws IOException, ServletException {
+      LOGGER.info("Sending test sequence to IP address '" + ipAddress + "', port '" + ipPort + "', user '" + user + "' (password not echoed here)...");
+      OutletController oc = new OutletController(ipAddress, ipPort, user, password);
       oc.testSockets();
       return FormValidation.ok("Test sequence completed.");
     }

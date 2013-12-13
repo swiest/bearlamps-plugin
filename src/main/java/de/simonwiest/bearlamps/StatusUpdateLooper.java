@@ -112,7 +112,7 @@ public class StatusUpdateLooper extends PeriodicWork {
     }
 
     // Create a new controller to communicate with outlet box.
-    OutletController oc = new OutletController(blp.getIpAddress(), blp.getIpPort(), blp.getPassword());
+    OutletController oc = new OutletController(blp.getIpAddress(), blp.getIpPort(), blp.getUser(), blp.getPassword());
 
     // Temporarily disabled? Mute all sockets.
     if (blp.isDisabled()) {

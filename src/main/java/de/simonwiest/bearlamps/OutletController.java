@@ -52,6 +52,7 @@ public class OutletController {
 
   private String ipAddress;
   private String ipPort;
+  private String user;
   private String password;
 
   /**
@@ -60,12 +61,14 @@ public class OutletController {
    * 
    * @param ipAddress ID address of outlet box.
    * @param ipPort IP port to send commands to.
+   * @param user User to authenticate at outlet box.
    * @param password Password to authenticate at outlet box.
    */
-  public OutletController(String ipAddress, String ipPort, String password) {
+  public OutletController(String ipAddress, String ipPort, String user, String password) {
     LOGGER.fine("Commands will be sent to IP address '" + ipAddress + "', port '" + ipPort + "'...");
     this.ipAddress = ipAddress;
     this.ipPort = ipPort;
+    this.user = user;
     this.password = password;
   }
 
@@ -110,7 +113,7 @@ public class OutletController {
     LOGGER.fine("Switching outlet no. " + outlet + " to " + newStatus + " using UDP...");
     try {
       String command = Status.ON.equals(newStatus) ? "on" : "off";
-      byte[] msg = ("Sw_" + command + outlet + password + (char) 0 + "\r\n").getBytes("iso-8859-1");
+      byte[] msg = ("Sw_" + command + outlet + user + password + (char) 0 + "\r\n").getBytes("iso-8859-1");
       InetAddress destAddr = InetAddress.getByName(ipAddress);
       int destPort = Integer.parseInt(ipPort);
       DatagramSocket udpSocket = new DatagramSocket();
